@@ -1,9 +1,5 @@
 import React from 'react';
-
-const squareStyle = {
-    height: '100px',
-    width: '100px',
-};
+import Square from './Square';
 
 export default class Board extends React.Component {
     render() {
@@ -11,7 +7,7 @@ export default class Board extends React.Component {
             let row = rowValues.map((value, columnIndex) => {
                 let mykey = "" + rowIndex + columnIndex;
                 return (
-                  <button style={squareStyle} key={mykey}>{value}</button>
+                  <Square value={value} key={mykey}/>
                 );
             });
             return (
