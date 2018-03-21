@@ -1,21 +1,45 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+const PLAYERX = "Player 1 - Xs";
+const PLAYER0 = "Player 2 - 0s";
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        turn: PLAYERX,
+        values: [
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ],
+    };
   }
-}
 
-export default App;
+  render() {
+      let text = "Turn of " + this.state.turn;
+      let board = this.state.values.map((rowValues, rowIndex) => {
+        let row = rowValues.map((value, columnIndex) => {
+            let mykey = "" + rowIndex + columnIndex;
+            return (
+              <span key={mykey}>{value}</span>
+            );
+        });
+        return (
+           <div key={"fila" + rowIndex}>
+             {row}
+           </div>
+        );
+      });
+
+      return (
+        <div>
+          <header className="header">
+            {text}
+          </header>
+          {board}
+        </div>
+      );
+  }
+
+}
