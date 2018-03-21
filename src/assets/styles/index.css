@@ -8,3 +8,11 @@ body {
 h2{
 	color: red;
 }
+
+.clickable {
+	cursor: pointer;
+}
+
+.no_clickable {
+	cursor: not-allowed;
+}
