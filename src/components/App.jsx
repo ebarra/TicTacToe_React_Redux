@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header.jsx';
 import Board from './Board.jsx';
+import Reset from './Reset.jsx';
 
 const PLAYERX = "Player 1 - Xs";
 const PLAYER0 = "Player 2 - 0s";
@@ -15,8 +16,10 @@ export default class App extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
         ],
+        moves: 0
     };
     this.appClick = this.appClick.bind(this);
+    this.resetClick = this.resetClick.bind(this);
     }
 
     appClick(rowNumber, columnNumber) {
@@ -26,7 +29,20 @@ export default class App extends React.Component {
         this.setState({
             turn: this.state.turn === PLAYERX ? PLAYER0 : PLAYERX,
             values: valuesCopy,
+            moves: this.state.moves +1
         });
+    }
+
+    resetClick(){
+      this.setState({
+        turn: PLAYERX,
+        values: [
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ],
+        moves: 0
+      });
     }
 
   render() {
@@ -36,6 +52,8 @@ export default class App extends React.Component {
       <div>
         <Header text={text}/>
         <Board values={this.state.values}  appClick={this.appClick}/>
+        <h3>Number of moves: {this.state.moves}</h3>
+        <Reset resetClick={this.resetClick}></Reset>
       </div>
     );
 }
