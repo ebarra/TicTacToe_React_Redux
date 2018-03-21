@@ -16,3 +16,9 @@ h2{
 .no_clickable {
 	cursor: not-allowed;
 }
+
+.turn {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
