@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header.jsx';
 import Board from './Board.jsx';
 
 const PLAYERX = "Player 1 - Xs";
@@ -69,11 +68,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    let text = "Turn of " + this.state.turn;
-
     return (
       <div>
-        <Header text={text} winner={this.state.winner}/>
         <Board values={this.state.values}  appClick={this.appClick} winner={this.state.winner}/>
       </div>
     );
