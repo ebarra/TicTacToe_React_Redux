@@ -11,13 +11,14 @@ export default class Square extends React.Component {
     this.squareClick = this.squareClick.bind(this);
   }
   squareClick() {
-    if(this.props.value === "-") {
+    if(this.props.value === "-" && typeof this.props.winner==="undefined") {
       this.props.boardClick(this.props.rowIndex, this.props.columnIndex);
     }
   }
   render() {
+    let myclassName = (this.props.value === "-" && typeof this.props.winner==="undefined") ? "clickable" : "no_clickable";
     return(
-      <button style={squareStyle} onClick={this.squareClick} className={this.props.value === "-" ? "clickable" : "no_clickable"}>
+      <button style={squareStyle} onClick={this.squareClick} className={myclassName}>
         {this.props.value}
       </button>
     );

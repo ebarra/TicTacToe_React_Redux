@@ -14,7 +14,7 @@ export default class Board extends React.Component {
             let row = rowValues.map((value, columnIndex) => {
                 let mykey = "" + rowIndex + columnIndex;
                 return (
-                  <Square value={value} key={mykey} rowIndex={rowIndex} columnIndex={columnIndex} boardClick={this.boardClick}/>
+                  <Square value={value} key={mykey} rowIndex={rowIndex} columnIndex={columnIndex} boardClick={this.boardClick} winner={this.props.winner}/>
                 );
             });
             return (
