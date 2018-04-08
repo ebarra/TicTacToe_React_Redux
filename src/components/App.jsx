@@ -15,7 +15,7 @@ export default class App extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
       ],
-      winner: undefined
+      winner: null
     };
     this.appClick = this.appClick.bind(this);
   }
@@ -32,7 +32,7 @@ export default class App extends React.Component {
   }
 
   getWinner(values){
-    let winner = undefined;
+    let winner = null;
     let n = values.length;
     for(let i=0; i<n; i++){
       for(let j=0; j<n; j++){
@@ -58,7 +58,7 @@ export default class App extends React.Component {
         }
       }
     }
-    if(typeof winner !== "undefined"){
+    if(winner !== null){
       if(winner === 'X'){
         winner = PLAYERX;
       } else {
