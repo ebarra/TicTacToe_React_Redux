@@ -15,6 +15,7 @@ export default class App extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
       ],
+      moves: 0,
       winner: null
     };
     this.appClick = this.appClick.bind(this);
@@ -27,6 +28,7 @@ export default class App extends React.Component {
     this.setState({
       turn: this.state.turn === PLAYERX ? PLAYER0 : PLAYERX,
       values: valuesCopy,
+      moves: this.state.moves + 1,
       winner: this.getWinner(valuesCopy)
     });
   }
@@ -75,6 +77,7 @@ export default class App extends React.Component {
       <div>
         <Header text={text} winner={this.state.winner}/>
         <Board values={this.state.values}  appClick={this.appClick} winner={this.state.winner}/>
+        <h3>Movimientos: {this.state.moves}</h3>
       </div>
     );
   }
