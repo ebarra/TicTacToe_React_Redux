@@ -6,8 +6,8 @@ export default class Board extends React.Component {
           super(props);
           this.boardClick = this.boardClick.bind(this);
       }
-      boardClick(numeroFila, numeroColumna) {
-          this.props.appClick(numeroFila, numeroColumna);
+      boardClick(rowNumber, columnNumber) {
+          this.props.appClick(rowNumber, columnNumber);
       }
     render() {
         let board = this.props.values.map((rowValues, rowIndex) => {
