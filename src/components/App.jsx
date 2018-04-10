@@ -77,7 +77,7 @@ export default class App extends React.Component {
       <div>
         <Header text={text} winner={this.state.winner}/>
         <Board values={this.state.values}  appClick={this.appClick} winner={this.state.winner}/>
-        <h3>Movimientos: {this.state.moves}</h3>
+        <h3>Number of moves: {this.state.moves}</h3>
       </div>
     );
   }
