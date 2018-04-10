@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header.jsx';
 import Board from './Board.jsx';
 import Reset from './Reset.jsx';
 
@@ -16,8 +15,7 @@ export default class App extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
       ],
-      winner: undefined,
-      moves: 0
+      winner: null
     };
     this.appClick = this.appClick.bind(this);
     this.resetClick = this.resetClick.bind(this);
@@ -30,14 +28,13 @@ export default class App extends React.Component {
     this.setState({
       turn: this.state.turn === PLAYERX ? PLAYER0 : PLAYERX,
       values: valuesCopy,
-      winner: this.getWinner(valuesCopy),
-      moves: this.state.moves +1
+      winner: this.getWinner(valuesCopy)
     });
   }
 
 
   getWinner(values){
-    let winner = undefined;
+    let winner = null;
     let n = values.length;
     for(let i=0; i<n; i++){
       for(let j=0; j<n; j++){
@@ -63,7 +60,7 @@ export default class App extends React.Component {
         }
       }
     }
-    if(typeof winner !== "undefined"){
+    if(winner !== null){
       if(winner === 'X'){
         winner = PLAYERX;
       } else {
@@ -81,19 +78,14 @@ export default class App extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
       ],
-      winner: undefined,
-      moves: 0
+      winner: null
     });
   }
 
   render() {
-    let text = "Turn of " + this.state.turn;
-
     return (
       <div>
-        <Header text={text} winner={this.state.winner}/>
         <Board values={this.state.values}  appClick={this.appClick} winner={this.state.winner}/>
-        <h3>Number of moves: {this.state.moves}</h3>
         <Reset resetClick={this.resetClick}></Reset>
       </div>
     );
