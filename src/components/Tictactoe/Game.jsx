@@ -17,8 +17,10 @@ export default class Game extends React.Component {
         ['-', '-', '-'],
         ['-', '-', '-'],
         ],
+        player_name:""
     };
     this.appClick = this.appClick.bind(this);
+    this.handlePlayerInputChange = this.handlePlayerInputChange.bind(this);
     }
 
     //this can´t be done in the componentDidMount because it is only called once
@@ -42,6 +44,7 @@ export default class Game extends React.Component {
               ['-', '-', '-'],
               ['-', '-', '-'],
               ],
+              player_name:""
           });
         }
       }
@@ -57,12 +60,16 @@ export default class Game extends React.Component {
         });
     }
 
+    handlePlayerInputChange(event){
+      this.setState({player_name: event.target.value});
+    }
+
   render() {
-    let text = "Turn of " + this.state.turn;
+    let text = "Turn of " + this.state.player_name + " " + this.state.turn;
 
     return (
       <div>
-        <Header text={text}/>
+        <Header text={text} player_name={this.state.player_name} handlePlayerInputChange={this.handlePlayerInputChange}/>
         <Board values={this.state.values}  appClick={this.appClick}/>
       </div>
     );
