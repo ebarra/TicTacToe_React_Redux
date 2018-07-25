@@ -1,19 +1,26 @@
 import React from 'react';
-import { Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
-const title = (
-  <h3>Turn</h3>
-);
 
 export default class Header extends React.Component {
     render() {
         return (
-          <Panel className="turn" bsStyle="info">
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Turn</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>{this.props.text}</Panel.Body>
-          </Panel>
+          <header>
+            <Navbar>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  <LinkContainer to="/"><a>TicTacToe</a></LinkContainer>
+                </Navbar.Brand>
+              </Navbar.Header>
+              <Nav>
+                <LinkContainer exact to="/"><NavItem eventKey={1}>Home</NavItem></LinkContainer>
+                <LinkContainer exact to='/new'><NavItem eventKey={2}>New Game</NavItem></LinkContainer>
+                <LinkContainer exact to='/continue'><NavItem eventKey={3}>Continue</NavItem></LinkContainer>
+              </Nav>
+            </Navbar>
+          </header>
         );
     }
 
