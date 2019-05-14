@@ -1,5 +1,9 @@
 # tictactoe_react_redux
 TicTacToe game created with React and Redux, step by step, each step in a different branch
+To install all specific versions of the packaged needed to develop this TicTacToe step by step please exec:
+> npm install ajv@6.10.0 connected-react-router@4.3.0 redux@3.7.2 react-redux@5.0.7 redux-thunk@2.3.0 react-router-dom@4.3.1
+
+Of course you can also use the package.json file to install them
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
