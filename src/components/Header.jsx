@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 const title = (
   <h3>Turn</h3>
@@ -8,12 +8,10 @@ const title = (
 export default class Header extends React.Component {
     render() {
         return (
-          <Panel className="turn" bsStyle="info">
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Turn</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>{this.props.text}</Panel.Body>
-          </Panel>
+          <Card style={{ width: '18rem' }}>
+            <Card.Title>Turn</Card.Title>
+            <Card.Body>{this.props.text}</Card.Body>
+          </Card>
         );
     }
 

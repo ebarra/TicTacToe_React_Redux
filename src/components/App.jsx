@@ -50,7 +50,9 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Header text={text}/>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+          <Header text={text}/>
+        </div>
         <Board values={this.state.values}  appClick={this.appClick}/>
         <h3>Number of moves: {this.state.moves}</h3>
         <Reset resetClick={this.resetClick}></Reset>
