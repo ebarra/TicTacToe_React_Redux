@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header.jsx';
+import MyHeader from './Header.jsx';
 import Board from './Board.jsx';
 import Reset from './Reset.jsx';
 
@@ -50,7 +50,9 @@ export default class Game extends React.Component {
 
     return (
       <div>
-        <Header text={text}/>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+          <MyHeader text={text}/>
+        </div>
         <Board values={this.state.values}  appClick={this.appClick}/>
         <h3>Number of moves: {this.state.moves}</h3>
         <Reset resetClick={this.resetClick}></Reset>
