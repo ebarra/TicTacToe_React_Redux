@@ -2,62 +2,43 @@ import React from 'react';
 import Header from './Header.jsx';
 import Board from './Board.jsx';
 import Reset from './Reset.jsx';
+import { connect } from 'react-redux';
+import { playPosition, reset } from './../redux/actions';
 
-const PLAYERX = "Player 1 - Xs";
-const PLAYER0 = "Player 2 - 0s";
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        turn: PLAYERX,
-        values: [
-        ['-', '-', '-'],
-        ['-', '-', '-'],
-        ['-', '-', '-'],
-        ],
-        moves: 0
-    };
     this.appClick = this.appClick.bind(this);
     this.resetClick = this.resetClick.bind(this);
     }
 
     appClick(rowNumber, columnNumber) {
-        let valuesCopy = JSON.parse(JSON.stringify(this.state.values));
-        let newMovement = this.state.turn === PLAYERX ? 'X' : '0';
-        valuesCopy[rowNumber][columnNumber] = newMovement;
-        this.setState({
-            turn: this.state.turn === PLAYERX ? PLAYER0 : PLAYERX,
-            values: valuesCopy,
-            moves: this.state.moves +1
-        });
+       this.props.dispatch(playPosition(rowNumber,columnNumber,this.props.turn, this.props.values))
     }
 
     resetClick(){
-      this.setState({
-        turn: PLAYERX,
-        values: [
-        ['-', '-', '-'],
-        ['-', '-', '-'],
-        ['-', '-', '-'],
-        ],
-        moves: 0
-      });
+        this.props.dispatch(reset());
     }
 
   render() {
-    let text = "Turn of " + this.state.turn;
+    let text = "Turn of " + this.props.turn;
 
     return (
       <div>
+      
         <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-          <Header text={text}/>
+          <Header text={text} winner={this.props.winner}/>
         </div>
-        <Board values={this.state.values}  appClick={this.appClick}/>
-        <h3>Number of moves: {this.state.moves}</h3>
+        <Board values={this.props.values}  appClick={this.appClick}/>
+        <h3>Number of moves: {this.props.moves}</h3>
         <Reset resetClick={this.resetClick}></Reset>
       </div>
     );
 }
 
 }
+function mapStateToProps(state) {
+  return { ...state };
+}
+export default connect(mapStateToProps)(App);
